@@ -17,24 +17,15 @@ class GeoField extends alaska.Field {
     const errorMsg = `Cannot cast data to geo type, at ${field._model.name}.${field.path}`;
 
     this.set = function (value) {
-      if (!value) {
-        return;
-      }
       if (Array.isArray(value)) {
-        if (value.length !== 2) {
-          throw new Error(errorMsg);
-        }
-        return value;
+        return [parseFloat(value[0]) || 0, parseFloat(value[1] || 0)];
       }
       if (typeof value === 'object') {
-        let lng = value.lng;
-        let lat = value.lat;
-        if (lng === undefined) {
-          throw new Error(errorMsg);
-        }
-        return [lng || 0, lat || 0];
+        let lng = parseFloat(value.lng) || 0;
+        let lat = parseFloat(value.lat) || 0;
+        return [lng, lat];
       }
-      throw new Error(errorMsg);
+      return [0, 0];
     };
   }
 
