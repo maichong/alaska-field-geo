@@ -36,11 +36,11 @@ class GeoField extends alaska.Field {
 GeoField.views = {
   cell: {
     name: 'GeoFieldCell',
-    field: __dirname + '/lib/cell.js'
+    path: __dirname + '/lib/cell.js'
   },
   view: {
     name: 'GeoFieldView',
-    field: __dirname + '/lib/view.js'
+    path: __dirname + '/lib/view.js'
   }
 };
 
