@@ -8,21 +8,22 @@ import React from 'react';
 
 import { shallowEqual } from 'alaska-admin-view';
 
+const { bool, object, any, func, string } = React.PropTypes;
+
 export default class GeoFieldView extends React.Component {
 
-
   static propTypes = {
-    model: React.PropTypes.object,
-    field: React.PropTypes.object,
-    data: React.PropTypes.object,
-    errorText: React.PropTypes.string,
-    disabled: React.PropTypes.bool,
-    value: React.PropTypes.any,
-    onChange: React.PropTypes.func,
+    model: object,
+    field: object,
+    data: object,
+    errorText: string,
+    disabled: bool,
+    value: any,
+    onChange: func,
   };
 
   static contextTypes = {
-    t: React.PropTypes.func,
+    t: func,
   };
 
   constructor(props) {
@@ -44,7 +45,7 @@ export default class GeoFieldView extends React.Component {
       } = this.props;
     const t = this.context.t;
     let help = field.help;
-    let className = 'form-group';
+    let className = 'form-group geo-field';
     if (errorText) {
       className += ' has-error';
       help = errorText;

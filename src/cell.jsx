@@ -6,10 +6,12 @@
 
 import React from 'react';
 
+const { func } = React.PropTypes;
+
 export default class GeoFieldCell extends React.Component {
 
   static contextTypes = {
-    t: React.PropTypes.func,
+    t: func,
   };
 
   shouldComponentUpdate(props) {
